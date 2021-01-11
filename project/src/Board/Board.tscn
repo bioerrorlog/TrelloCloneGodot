@@ -1,0 +1,73 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/Board/Board.gd" type="Script" id=1]
+
+[node name="Board" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.14902, 0.172549, 0.231373, 1 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 1014.0
+margin_bottom = 590.0
+
+[node name="BoardInfoHeader" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_right = 1004.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 0, 32 )
+
+[node name="BoardTitle" type="Label" parent="MarginContainer/VBoxContainer/BoardInfoHeader"]
+margin_top = 9.0
+margin_right = 899.0
+margin_bottom = 23.0
+size_flags_horizontal = 7
+text = "Board Title"
+valign = 1
+
+[node name="MenuButton" type="Button" parent="MarginContainer/VBoxContainer/BoardInfoHeader"]
+margin_left = 903.0
+margin_right = 1004.0
+margin_bottom = 32.0
+text = "... Show Menu"
+align = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 36.0
+margin_right = 1004.0
+margin_bottom = 580.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ListContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer"]
+margin_right = 280.0
+margin_bottom = 544.0
+size_flags_vertical = 3
+
+[node name="AddListButton" type="Button" parent="MarginContainer/VBoxContainer/ScrollContainer/ListContainer"]
+margin_right = 280.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "+ Add list"
+[connection signal="button_up" from="MarginContainer/VBoxContainer/ScrollContainer/ListContainer/AddListButton" to="." method="_on_AddListButton_button_up"]
